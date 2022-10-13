@@ -1,11 +1,35 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Card from '../components/Card';
 import Nav from '../components/Nav';
 
 const Home = () => {
+
+    const [getMovies, setGetMovies] = useState([]);
+
+    const getData = () => {
+        axios.get('https://api.themoviedb.org/3/search/movie?api_key=ed82f4c18f2964e75117c2dc65e2161d&query=code&language=fr-FR')
+        .then((res) => setGetMovies(res.data.results))
+        
+    }
+
+    useEffect(() => {
+        getData()
+        
+    }, [])
+    console.log(getMovies)
+
     return (
         <div>
             <Nav />
             <h1>Home</h1>
+            <div className="card-container">
+                {
+                    getMovies.map((movie, index) =>(
+                        <Card key={index} movie={movie}/>
+                        ))
+                }
+            </div>
         </div>
     );
 };
