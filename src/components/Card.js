@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Card = () => {
+const Card = ({movie}) => {
     return (
-        <div>
-            <p>a card</p>
+        <div className='card'>
+            <img src={'https://image.tmdb.org/t/p/original/' + movie.poster_path} />
         </div>
     );
 };
