@@ -22,7 +22,6 @@ const Home = () => {
     return (
         <div>
             <Nav />
-            <h1>Home</h1>
             <div className="card-container">
                 {
                     getMovies.map((movie, index) =>(
