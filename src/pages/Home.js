@@ -7,6 +7,7 @@ const Home = () => {
 
     const [getMovies, setGetMovies] = useState([]);
     const [searchMovie, setSearchMovie] = useState('');
+    const [sortGoodBad, setSortGoodBad] = useState(null);
    
 
     const getData = () => {
@@ -33,14 +34,22 @@ const Home = () => {
                     </form>
                 </div>
                 <div className="btn-sort-container">
-                    <div id="goodToBad" onClick={() => getMovies.sort((a,b) => b.vote_average - a.vote_average)}>Top</div>
-                    <div id="badToGood">Flop</div>
+                    <div id="goodToBad" onClick={() => setSortGoodBad(goodToBad)}>Top</div>
+                    <div id="badToGood" onClick={() => setSortGoodBad(badToGood)}>Flop</div>
                 </div>
             </div>
             
             <div className="card-container">
                 {
-                    getMovies.map((movie, index) =>(
+                    getMovies
+                    .sort((a,b) => {
+                        if(sortGoodBad === goodToBad){
+                        return b.vote_average - a.vote_average}
+                        if(sortGoodBad === badToGood){
+                            return a.vote_average - b.vote_average
+                        }
+                    })    
+                    .map((movie, index) =>(
                         <Card key={index} movie={movie}/>
                         ))
                 }
