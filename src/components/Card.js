@@ -1,4 +1,8 @@
+import DefaultImg from '../../src/img/poster.jpg';
+
 const Card = ({movie}) => {
+
+    
 
     let genreArr = [];
     const findGenre = () => {
@@ -70,7 +74,12 @@ const Card = ({movie}) => {
 
     return (
         <div className='card'>
-            <img src={'https://image.tmdb.org/t/p/original/' + movie.poster_path} />
+            {movie.poster_path != null ? 
+            <img src={ 'https://image.tmdb.org/t/p/original/' + movie.poster_path} />
+            :
+            <img src={DefaultImg} />
+            }
+            
             <h2>{movie.title}</h2>
             <h5>{movie.release_date}</h5>
             <h4>{movie.vote_average}/10 <span>star</span></h4>
