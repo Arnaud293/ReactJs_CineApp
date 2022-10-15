@@ -71,6 +71,13 @@ const Card = ({movie}) => {
         return genreArr.map((genre) => <li>{genre}</li>);
     }
     
+    const handleFavorites = (e) =>{
+        e.preventDefault();
+
+        let favStore = localStorage;
+        favStore.setItem('favorite', JSON.stringify(movie));
+        alert(`${movie.title} vient d'être ajouté à vos favoris !`)
+    }
 
     return (
         <div className='card'>
@@ -89,7 +96,7 @@ const Card = ({movie}) => {
             </ul>
             <h3>Synopsis</h3>
             <p>{movie.overview}</p>
-            <div className='btn' >Ajouter aux coups de coeur</div>
+            <div className='btn' onClick={(e) => handleFavorites(e)}>Ajouter aux coups de coeur</div>
         </div>
     );
 };
