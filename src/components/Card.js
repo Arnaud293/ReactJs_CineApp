@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import DefaultImg from '../../src/img/poster.jpg';
 
 const Card = ({movie}) => {
@@ -70,13 +71,18 @@ const Card = ({movie}) => {
         }
         return genreArr.map((genre) => <li>{genre}</li>);
     }
-    
+
     const handleFavorites = (e) =>{
         e.preventDefault();
 
-        let favStore = localStorage;
-        favStore.setItem('favorite', JSON.stringify(movie));
+        let favStore = window.localStorage.movies ? window.localStorage.movies.split(',') : [];
+
+        if(!favStore.includes(movie.id.toString()))
+        {
+        favStore.push(movie);
+        localStorage.movies = JSON.stringify(favStore);
         alert(`${movie.title} vient d'être ajouté à vos favoris !`)
+        }
     }
 
     return (
