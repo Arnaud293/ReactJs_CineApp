@@ -85,6 +85,15 @@ const Card = ({movie}) => {
         }
     }
 
+    const handleDeleteFavorites = () => {
+        let storedData = window.localStorage.movies.split(',');
+        let newData = storedData.filter((id) => id != movie.id );
+        window.localStorage.movies= newData;
+
+        alert(`${movie.title} vient d'être retiré de vos favoris !`)
+        window.location.reload();
+    }
+
     return (
         <div className='card'>
             {movie.poster_path != null ? 
@@ -102,7 +111,11 @@ const Card = ({movie}) => {
             </ul>
             <h3>Synopsis</h3>
             <p>{movie.overview}</p>
-            <div className='btn' onClick={(e) => handleFavorites(e)}>Ajouter aux coups de coeur</div>
+            {movie.genre_ids ? (
+            <div className='btn' onClick={(e) => handleFavorites(e)}>Ajouter aux coups de coeur</div>)
+            : (
+            <div className='btn' onClick={(e) => handleDeleteFavorites()}>Retirer coup de coeur</div>
+            )}
         </div>
     );
 };
