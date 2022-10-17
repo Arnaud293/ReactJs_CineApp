@@ -111,7 +111,7 @@ const Card = ({movie}) => {
             </ul>
             <h3>Synopsis</h3>
             <p>{movie.overview}</p>
-            {movie.genre_ids ? (
+            {!window.localStorage.movies.includes(movie.id) ? (
             <div className='btn' onClick={(e) => handleFavorites(e)}>Ajouter aux coups de coeur</div>)
             : (
             <div className='btn' onClick={(e) => handleDeleteFavorites()}>Retirer coup de coeur</div>
