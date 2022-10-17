@@ -79,9 +79,9 @@ const Card = ({movie}) => {
 
         if(!favStore.includes(movie.id.toString()))
         {
-        favStore.push(movie);
-        localStorage.movies = JSON.stringify(favStore);
-        alert(`${movie.title} vient d'être ajouté à vos favoris !`)
+            favStore.push(movie.id);
+            window.localStorage.movies = favStore;
+            alert(`${movie.title} vient d'être ajouté à vos favoris !`)
         }
     }
 
