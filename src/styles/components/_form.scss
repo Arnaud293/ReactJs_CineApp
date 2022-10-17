@@ -53,6 +53,8 @@
       width: 110px;
       transition: 0.3s;
       position: relative;
+      display: flex;
+      justify-content: space-around;
 
       &:hover {
         background: $black;

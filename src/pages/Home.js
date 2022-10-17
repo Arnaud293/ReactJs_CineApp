@@ -34,8 +34,8 @@ const Home = () => {
                     </form>
                 </div>
                 <div className="btn-sort-container">
-                    <div id="goodToBad" onClick={() => setSortGoodBad(goodToBad)}>Top</div>
-                    <div id="badToGood" onClick={() => setSortGoodBad(badToGood)}>Flop</div>
+                    <div id="goodToBad" onClick={() => setSortGoodBad(goodToBad)}>Top <span>➡️</span></div>
+                    <div id="badToGood" onClick={() => setSortGoodBad(badToGood)}>Flop<span>➡️</span></div>
                 </div>
             </div>
             

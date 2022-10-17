@@ -104,7 +104,7 @@ const Card = ({movie}) => {
             
             <h2>{movie.title}</h2>
             <h5>{movie.release_date}</h5>
-            <h4>{movie.vote_average}/10 <span>star</span></h4>
+            <h4>{movie.vote_average}/10 <span>⭐</span></h4>
             <ul>
                 
                 {movie.genre_ids ? findGenre() : null}

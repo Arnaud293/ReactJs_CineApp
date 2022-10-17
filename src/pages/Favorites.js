@@ -21,7 +21,7 @@ const Favorites = () => {
         <div>
             <Nav />
             <div className='card-container'>
-                {storedMovies === null ? <h1>Aucun favoris enregistré</h1> : (
+                {storedMovies === null ? <h1>Aucun favoris enregistré 🧡</h1> : (
                 storedMovies.map((movie) => (
                     <Card movie={movie} key={movie.id}/>
                 )))}
